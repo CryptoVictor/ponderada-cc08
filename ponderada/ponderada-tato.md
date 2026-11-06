@@ -253,6 +253,7 @@ Como cada coluna foi medida:
 | 1, sem sincronização | 1 | 20.000 | 19.934 | 3.016 | 2.950 | não | 103,6 s |
 | 1, sem sincronização | 2 | 20.000 | 20.008 | 3.137 | 3.145 | não | 103,9 s |
 | 1, sem sincronização | 3 | 20.000 | 19.928 | 3.008 | 2.936 | não | 103,7 s |
+| 1, sem sincronização | 4 (a do print) | 20.000 | 19.928 | 3.187 | 3.115 | não | 103,6 s |
 | 2, semáforos | 1 | 20.000 | 20.000 | 0 | 0 | não | 3,3 s |
 | 2, semáforos | 2 | 20.000 | 20.000 | 0 | 0 | não | 3,2 s |
 | 2, semáforos | 3 | 20.000 | 20.000 | 0 | 0 | não | 3,2 s |
@@ -260,25 +261,27 @@ Como cada coluna foi medida:
 | 3, ordem trocada | 2 | 4 | 0 | 4 | 0 | **sim** | 1,0 s |
 | 3, ordem trocada | 3 | 4 | 0 | 4 | 0 | **sim** | 1,0 s |
 
-Na versão 1, cerca de **15% das amostras se perderam** e outros ~15% das leituras foram repetidas. Além disso, entre 1.493 e 1.579 leituras chegaram **fora de ordem**, ou seja, o motor vibrou por uma amostra mais antiga que a anterior. Repare que o total consumido fica perto de 20.000. Isso não é sinal de acerto: os dois erros se compensam (consumidas − produzidas = duplicadas − perdidas). Na versão 3, as 4 amostras "perdidas" são as N = 4 que ficaram presas no buffer cheio na hora do deadlock.
+Na versão 1, entre **15% e 16% das amostras se perderam** e outros ~15% das leituras foram repetidas. Além disso, entre 1.493 e 1.579 leituras chegaram **fora de ordem**, ou seja, o motor vibrou por uma amostra mais antiga que a anterior. Repare que o total consumido fica perto de 20.000. Isso não é sinal de acerto: os dois erros se compensam (consumidas − produzidas = duplicadas − perdidas). Na versão 3, as 4 amostras "perdidas" são as N = 4 que ficaram presas no buffer cheio na hora do deadlock.
 
 A espera ocupada também tem custo: a versão 1 levou **~104 s**, contra **~3,2 s** da versão 2, para o mesmo trabalho. A thread que gira esperando não faz nada útil e segura a CPU (e, em Python, o GIL) até o escalonador tirá-la. Na pulseira, isso seria bateria gasta à toa e latência para as outras threads.
 
 ### Prints
 
-**Versão 1:** sem sincronização, perde e duplica amostras.
-
-![Versão 1, execução 1](img/a4-versao1-execucao1.png)
+Prints do terminal, tirados em sequência na mesma janela. Por isso cada print mostra também os comandos anteriores, e a última saída é a da versão indicada.
 
 **Versão 2:** com semáforos, as 20.000 amostras chegam certas.
 
-![Versão 2, execução 1](img/a4-versao2-execucao1.png)
+![Versão 2](img/a4-versao2-execucao1.png)
 
 **Versão 3:** ordem trocada, deadlock depois de 4 amostras.
 
-![Versão 3, execução 1](img/a4-versao3-execucao1.png)
+![Versão 3](img/a4-versao3-execucao1.png)
 
-A saída completa das 9 execuções está em [`codigo/logs/`](codigo/logs/).
+**Versão 1:** sem sincronização, perde e duplica amostras. Este é o print da execução 4 da tabela. O programa mostra "execução 1" porque foi rodado sem a opção `-e`, que só muda esse rótulo.
+
+![Versão 1](img/a4-versao1-execucao4.png)
+
+A saída completa das execuções 1 a 3 de cada versão está em [`codigo/logs/`](codigo/logs/).
 
 ### Região crítica da versão 1, e por que ela perde e duplica amostras
 
