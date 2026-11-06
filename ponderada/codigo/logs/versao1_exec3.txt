@@ -1,0 +1,13 @@
+$ python3 versao1.py -e 3
+============================================================
+Versão 1 (sem sincronização) - execução 3   (N = 4, Python 3.12.3, PID 4017376)
+============================================================
+  amostras produzidas :  20000
+  amostras consumidas :  19928
+  perdidas            :   3008
+  duplicadas          :   2936
+  leituras inválidas  :      0
+  fora de ordem       :   1556
+  travou?             : não
+  duração             : 103.68 s
+============================================================

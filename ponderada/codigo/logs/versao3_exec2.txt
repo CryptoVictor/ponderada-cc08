@@ -1,0 +1,14 @@
+$ python3 versao3.py -e 2
+============================================================
+Versão 3 (ordem trocada) - execução 2   (N = 4, Python 3.12.3, PID 4023646)
+============================================================
+  amostras produzidas :      4
+  amostras consumidas :      0
+  perdidas            :      4
+  duplicadas          :      0
+  leituras inválidas  :      0
+  fora de ordem       :      0
+  travou?             : SIM
+    -> consumidor ficou 1 s sem receber nada; thread sensor viva=True, thread motor viva=True
+  duração             : 1.00 s
+============================================================

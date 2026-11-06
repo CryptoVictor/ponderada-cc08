@@ -1,0 +1,10 @@
+versao;execucao;produzidas;consumidas;perdidas;duplicadas;invalidas;travou;duracao_s
+Versão 1 (sem sincronização);1;20000;19934;3016;2950;0;não;103.58
+Versão 1 (sem sincronização);2;20000;20008;3137;3145;0;não;103.88
+Versão 1 (sem sincronização);3;20000;19928;3008;2936;0;não;103.68
+Versão 2 (semáforos);1;20000;20000;0;0;0;não;3.28
+Versão 2 (semáforos);2;20000;20000;0;0;0;não;3.24
+Versão 2 (semáforos);3;20000;20000;0;0;0;não;3.24
+Versão 3 (ordem trocada);1;4;0;4;0;0;sim;1.00
+Versão 3 (ordem trocada);2;4;0;4;0;0;sim;1.00
+Versão 3 (ordem trocada);3;4;0;4;0;0;sim;1.00

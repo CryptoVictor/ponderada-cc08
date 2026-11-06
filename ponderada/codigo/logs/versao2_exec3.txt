@@ -1,0 +1,13 @@
+$ python3 versao2.py -e 3
+============================================================
+Versão 2 (semáforos) - execução 3   (N = 4, Python 3.12.3, PID 4023365)
+============================================================
+  amostras produzidas :  20000
+  amostras consumidas :  20000
+  perdidas            :      0
+  duplicadas          :      0
+  leituras inválidas  :      0
+  fora de ordem       :      0
+  travou?             : não
+  duração             : 3.24 s
+============================================================
