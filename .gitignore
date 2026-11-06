@@ -4,5 +4,4 @@ __pycache__/
 .vscode/
 .idea/
 .DS_Store
-# enunciado da atividade (não faz parte da entrega)
 *.pdf
